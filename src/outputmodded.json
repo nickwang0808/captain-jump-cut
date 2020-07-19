@@ -1,0 +1,446 @@
+[
+  {
+    "word": "play",
+    "st": 0.0,
+    "et": 0.2,
+    "include": true
+  },
+  {
+    "word": "duck",
+    "st": 0.2,
+    "et": 1.0,
+    "include": true
+  },
+  {
+    "word": "duck",
+    "st": 1.0,
+    "et": 1.5,
+    "include": true
+  },
+  {
+    "word": "you",
+    "st": 1.5,
+    "et": 1.8,
+    "include": true
+  },
+  {
+    "word": "how",
+    "st": 1.8,
+    "et": 1.9,
+    "include": true
+  },
+  {
+    "word": "it's",
+    "st": 1.9,
+    "et": 2.1,
+    "include": true
+  },
+  {
+    "word": "going",
+    "st": 2.1,
+    "et": 2.3,
+    "include": true
+  },
+  {
+    "word": "to",
+    "st": 2.3,
+    "et": 2.3,
+    "include": true
+  },
+  {
+    "word": "flip",
+    "st": 2.3,
+    "et": 2.6,
+    "include": true
+  },
+  {
+    "word": "through",
+    "st": 2.6,
+    "et": 2.8,
+    "include": true
+  },
+  {
+    "word": "an",
+    "st": 2.8,
+    "et": 2.9,
+    "include": true
+  },
+  {
+    "word": "adult",
+    "st": 2.9,
+    "et": 3.2,
+    "include": true
+  },
+  {
+    "word": "magazine",
+    "st": 3.2,
+    "et": 3.7,
+    "include": true
+  },
+  {
+    "word": "called",
+    "st": 3.7,
+    "et": 4.0,
+    "include": true
+  },
+  {
+    "word": "play",
+    "st": 4.0,
+    "et": 4.2,
+    "include": true
+  },
+  {
+    "word": "duck",
+    "st": 4.2,
+    "et": 4.6,
+    "include": true
+  },
+  {
+    "word": "we're",
+    "st": 4.6,
+    "et": 4.7,
+    "include": true
+  },
+  {
+    "word": "going",
+    "st": 4.7,
+    "et": 4.9,
+    "include": true
+  },
+  {
+    "word": "to",
+    "st": 4.9,
+    "et": 4.9,
+    "include": true
+  },
+  {
+    "word": "see",
+    "st": 4.9,
+    "et": 5.0,
+    "include": true
+  },
+  {
+    "word": "some",
+    "st": 5.0,
+    "et": 5.1,
+    "include": true
+  },
+  {
+    "word": "fully",
+    "st": 5.1,
+    "et": 5.6,
+    "include": true
+  },
+  {
+    "word": "exposed",
+    "st": 5.6,
+    "et": 6.2,
+    "include": true
+  },
+  {
+    "word": "duct",
+    "st": 6.2,
+    "et": 6.5,
+    "include": true
+  },
+  {
+    "word": "boobs",
+    "st": 6.5,
+    "et": 6.8,
+    "include": true
+  },
+  {
+    "word": "what",
+    "st": 6.8,
+    "et": 7.0,
+    "include": true
+  },
+  {
+    "word": "year",
+    "st": 7.0,
+    "et": 7.3,
+    "include": true
+  },
+  {
+    "word": "will",
+    "st": 7.3,
+    "et": 7.5,
+    "include": true
+  },
+  {
+    "word": "Ducks",
+    "st": 7.5,
+    "et": 7.8,
+    "include": true
+  },
+  {
+    "word": "evolve",
+    "st": 7.8,
+    "et": 8.1,
+    "include": true
+  },
+  {
+    "word": "to",
+    "st": 8.1,
+    "et": 8.2,
+    "include": true
+  },
+  {
+    "word": "have",
+    "st": 8.2,
+    "et": 8.4,
+    "include": true
+  },
+  {
+    "word": "human-like",
+    "st": 8.4,
+    "et": 8.8,
+    "include": true
+  },
+  {
+    "word": "boobs",
+    "st": 8.8,
+    "et": 9.5,
+    "include": true
+  },
+  {
+    "word": "so",
+    "st": 9.5,
+    "et": 9.5,
+    "include": true
+  },
+  {
+    "word": "you",
+    "st": 9.5,
+    "et": 9.8,
+    "include": true
+  },
+  {
+    "word": "know",
+    "st": 9.8,
+    "et": 9.8,
+    "include": true
+  },
+  {
+    "word": "we're",
+    "st": 9.8,
+    "et": 10.0,
+    "include": true
+  },
+  {
+    "word": "going",
+    "st": 10.0,
+    "et": 10.0,
+    "include": true
+  },
+  {
+    "word": "to",
+    "st": 10.0,
+    "et": 10.1,
+    "include": true
+  },
+  {
+    "word": "want",
+    "st": 10.1,
+    "et": 10.3,
+    "include": true
+  },
+  {
+    "word": "to",
+    "st": 10.3,
+    "et": 10.4,
+    "include": true
+  },
+  {
+    "word": "show",
+    "st": 10.4,
+    "et": 10.6,
+    "include": true
+  },
+  {
+    "word": "those",
+    "st": 10.6,
+    "et": 10.8,
+    "include": true
+  },
+  {
+    "word": "in",
+    "st": 10.8,
+    "et": 11.0,
+    "include": true
+  },
+  {
+    "word": "full",
+    "st": 11.0,
+    "et": 11.2,
+    "include": true
+  },
+  {
+    "word": "detail",
+    "st": 11.2,
+    "et": 11.5,
+    "include": true
+  },
+  {
+    "word": "play",
+    "st": 11.5,
+    "et": 11.8,
+    "include": true
+  },
+  {
+    "word": "censored",
+    "st": 11.8,
+    "et": 12.6,
+    "include": true
+  },
+  {
+    "word": "or",
+    "st": 12.6,
+    "et": 12.8,
+    "include": true
+  },
+  {
+    "word": "nope",
+    "st": 12.8,
+    "et": 13.0,
+    "include": true
+  },
+  {
+    "word": "not",
+    "st": 13.0,
+    "et": 13.2,
+    "include": true
+  },
+  {
+    "word": "censored",
+    "st": 13.2,
+    "et": 13.5,
+    "include": true
+  },
+  {
+    "word": "in",
+    "st": 13.5,
+    "et": 13.6,
+    "include": true
+  },
+  {
+    "word": "any",
+    "st": 13.6,
+    "et": 13.8,
+    "include": true
+  },
+  {
+    "word": "way",
+    "st": 13.8,
+    "et": 14.0,
+    "include": true
+  },
+  {
+    "word": "we",
+    "st": 14.0,
+    "et": 14.2,
+    "include": true
+  },
+  {
+    "word": "just",
+    "st": 14.2,
+    "et": 14.2,
+    "include": true
+  },
+  {
+    "word": "went",
+    "st": 14.2,
+    "et": 14.5,
+    "include": true
+  },
+  {
+    "word": "straight",
+    "st": 14.5,
+    "et": 14.7,
+    "include": true
+  },
+  {
+    "word": "up",
+    "st": 14.7,
+    "et": 14.9,
+    "include": true
+  },
+  {
+    "word": "got",
+    "st": 14.9,
+    "et": 15.0,
+    "include": true
+  },
+  {
+    "word": "to",
+    "st": 15.0,
+    "et": 15.1,
+    "include": true
+  },
+  {
+    "word": "show",
+    "st": 15.1,
+    "et": 15.3,
+    "include": true
+  },
+  {
+    "word": "up",
+    "st": 15.3,
+    "et": 15.5,
+    "include": true
+  },
+  {
+    "word": "for",
+    "st": 15.5,
+    "et": 15.6,
+    "include": true
+  },
+  {
+    "word": "this",
+    "st": 15.6,
+    "et": 15.7,
+    "include": true
+  },
+  {
+    "word": "movie",
+    "st": 15.7,
+    "et": 16.0,
+    "include": true
+  },
+  {
+    "word": "with",
+    "st": 16.0,
+    "et": 16.1,
+    "include": true
+  },
+  {
+    "word": "a",
+    "st": 16.1,
+    "et": 16.2,
+    "include": true
+  },
+  {
+    "word": "talking",
+    "st": 16.2,
+    "et": 16.4,
+    "include": true
+  },
+  {
+    "word": "duck",
+    "st": 16.4,
+    "et": 16.9,
+    "include": true
+  },
+  {
+    "word": "it's",
+    "st": 16.9,
+    "et": 17.1,
+    "include": true
+  },
+  {
+    "word": "not",
+    "st": 17.1,
+    "et": 17.2,
+    "include": true
+  }
+]

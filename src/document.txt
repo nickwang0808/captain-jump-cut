@@ -1,0 +1,63 @@
+Vid editor
+
+Back end
+
+What it does on the high level:
+    -take an video file and covert it to audio
+    -use a transcribing api to get all the subtitle and timecode of the video
+    -return data as json file with word, starttime, endtime.
+    -process the subtitle and send the processed timestamp for processing
+    -convert individual word into blocks of word
+    -send timecode of blocked words for editing
+    -and finally render the video to output
+
+
+Potential features:
+    -trim dead silences based on user preset tolerense
+    -layout the dead silence in the UI
+    -use AI to make sense of the texts to automate the cutting process.
+
+
+stacks needed:
+    -a transcribing api
+    -a editing tool like moviepy
+    -some kind of UI for the editing part
+
+
+note: 
+    -might be able to use something in jumpcutter from github
+    -set GOOGLE_APPLICATION_CREDENTIALS=
+
+
+TODO:
+    $-get sample timecode file, first look is google speech to text
+    $-get a sample json file
+    $-extract time code end to end
+    $-do a mock editing
+    -build basic editing ui.
+    -
+
+
+Front end 
+
+Main idea
+    -2 column one for the text and one for video preview
+    -video player play based on called second.
+    -text will be pulled from json transcription.
+
+TODO:
+
+    =-build a video player first
+    =-add include key and value to json file
+    -implement te Json fetch
+    -modify the data to add include object
+    
+
+when I click on preview mode, im gonna set previewmode to true, read the timeblock
+
+if the timeblock is not [], call a function to watch for second 10 and log it 
+
+as soon as the second go over the conditioned time, seekto the next time
+
+let's inplment a for loop everytime the playpoint change, it's gonna loop through time block 
+and find which index the playpoint belong to.
