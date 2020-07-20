@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./App.css";
 import Word from "./components/word";
 import ReactPlayer from "react-player";
 
