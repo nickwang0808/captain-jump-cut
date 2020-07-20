@@ -49,9 +49,12 @@ TODO:
 
     =-build a video player first
     =-add include key and value to json file
-    -implement te Json fetch
-    -modify the data to add include object
-    
+    =-implement te Json fetch
+    =-modify the data to add include object
+    -now lets add style to the editor
+    -implement multi select button
+    -
+
 
 when I click on preview mode, im gonna set previewmode to true, read the timeblock
 
@@ -61,3 +64,9 @@ as soon as the second go over the conditioned time, seekto the next time
 
 let's inplment a for loop everytime the playpoint change, it's gonna loop through time block 
 and find which index the playpoint belong to.
+
+I want the border and background color to be none when nothing happens, On hover, I want a little bit of 
+shadow. on click I want green. On delete I want gray. on play I want green aswell
+
+when I click and drag i want all dragged button to highlight, push these word to slectedWord, word.jsx will look into the
+and modify the styling acodringly, video to be seekto the last element of the state.
