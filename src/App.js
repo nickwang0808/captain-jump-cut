@@ -11,6 +11,8 @@ function App() {
   const [timeBlock, setTimeBlock] = useState([]);
   const [index, setIndex] = useState(0);
   const [previewMode, setPreviewMode] = useState(false);
+  const [mouseIsDown, setMouseIsDown] = useState(false);
+  const [selectedWord, setSelectedWord] = useState([]);
   const [url, setUrl] = useState(
     "https://inputvid.s3.us-east-2.amazonaws.com/1mintedtalk.mp4"
   );
@@ -40,25 +42,61 @@ function App() {
     console.log("timeBlockLocal set");
   };
 
-  // need to make a async to wait for the video to play to the point
+  const handleProgress = (progress) => {
+    // console.log(progress.playedSeconds);
+    setPlayPoint(progress.playedSeconds);
+  };
 
   const handleClick = (w) => {
     player.current.seekTo(w.start_time);
     setPlayPoint(w.start_time);
   };
 
-  const handleProgress = (progress) => {
-    // console.log(progress.playedSeconds);
-    setPlayPoint(progress.playedSeconds);
+  const handleMouseDown = (e, w) => {
+    setMouseIsDown(true);
+    console.log(mouseIsDown);
+    // add the clicked word to array, and check if word is in, if is then remove it.
+    let selectedWordCopy = [...selectedWord];
+    if (selectedWord.length !== 0) {
+      setSelectedWord([]);
+    } else if (!selectedWord.includes(w)) {
+      selectedWordCopy.push(w);
+      setSelectedWord(selectedWordCopy);
+      console.log(selectedWord);
+    } else {
+      selectedWordCopy.splice(selectedWordCopy.indexOf(w), 1);
+      setSelectedWord(selectedWordCopy);
+    }
+  };
+
+  const handleMouseUp = (w) => {
+    setMouseIsDown(false);
+    handleClick(w);
+  };
+
+  const handleMouseEnter = (e, w) => {
+    if (mouseIsDown) {
+      let selectedWordCopy = [...selectedWord];
+      if (selectedWord.includes(w)) {
+        return;
+      } else {
+        selectedWordCopy.push(w);
+        setSelectedWord(selectedWordCopy);
+        console.log(selectedWord);
+      }
+    }
   };
 
   // change include to false when Del is pressed
   const handleKeyDown = (e, w) => {
     if (e.keyCode === 8) {
-      const index = data.indexOf(w);
-      const dataClone = data.slice();
-      dataClone[index].include = false;
-      setData(dataClone);
+      let dataClone = [...data];
+      for (let i = 0; i < selectedWord.length; i++) {
+        let index = data.indexOf(selectedWord[i]);
+        dataClone[index].include = false;
+        setData(dataClone);
+        setSelectedWord([]);
+      }
       handleSetTimeBlock();
     }
   };
@@ -107,6 +145,8 @@ function App() {
         setData(
           json.results.items.map((word) => {
             word.include = true;
+            // tweak this value to get rid of the sound of a removed word
+            // word.end_time = parseFloat(word.end_time) - 0.2;
             return word;
           })
         )
@@ -121,23 +161,15 @@ function App() {
     }
   }, [playPoint]);
 
+  // useEffect(() => {
+  //   if (mouseIsDown) {
+  //     document.addEventListener("onmouseenter", console.log("e"));
+  //   }
+  // }, [mouseIsDown]);
+
   return (
-    <div className="flex-h">
-      <div className="column">
-        {data.map((w) => (
-          <Word
-            key={w.alternatives[0].content + w.start_time + data.indexOf(w)}
-            value={w.alternatives[0].content}
-            st={w.start_time}
-            et={w.end_time}
-            include={w.include}
-            playPoint={playPoint}
-            onClick={() => handleClick(w)}
-            onKeyDown={(e) => handleKeyDown(e, w)}
-          />
-        ))}
-      </div>
-      <div className="column">
+    <div className="m-4 d-flex flex-row">
+      <div className="mr-4 p-2 vid-box align-items-start">
         <ReactPlayer
           ref={player}
           url={url}
@@ -145,10 +177,40 @@ function App() {
           progressInterval={10}
           onProgress={handleProgress}
           playing={playing}
+          style={{ border: "none" }}
         />
-        <button onClick={handlePreviewClicked}>Preview</button>
-        <span>{previewMode ? "True" : "False"}</span>
-        <button onClick={handlePause}>Pause</button>
+        <div className="d-flex flex-row align-items-center justify-content-center">
+          <button
+            className="m-2 btn btn-outline-primary"
+            onClick={handlePreviewClicked}
+          >
+            Preview Mode
+          </button>
+          <span>{previewMode ? "On" : "Off"}</span>
+          <button className="m-2 btn btn-primary" onClick={handlePause}>
+            Pause
+          </button>
+        </div>
+      </div>
+      <div className="p-2 word-box ">
+        {data.map((w) => (
+          <Word
+            key={w.alternatives[0].content + w.start_time + data.indexOf(w)}
+            value={w.alternatives[0].content}
+            st={w.start_time}
+            et={w.end_time}
+            contentType={w.type}
+            include={w.include}
+            playPoint={playPoint}
+            // onClick={() => handleClick(w)}
+            onKeyDown={(e) => handleKeyDown(e, w)}
+            onMouseUp={() => handleMouseUp(w)}
+            onMouseDown={(e) => handleMouseDown(e, w)}
+            onMouseEnter={(e) => handleMouseEnter(e, w)}
+            wordData={w}
+            selectedWord={selectedWord}
+          />
+        ))}
       </div>
     </div>
   );
