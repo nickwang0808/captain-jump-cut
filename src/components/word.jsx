@@ -32,7 +32,6 @@ function word({
           onClick={onClick}
           onKeyDown={onKeyDown}
           type="button"
-          // disabled={disable}
           onMouseDown={onMouseDown}
           onMouseUp={onMouseUp}
           onMouseEnter={onMouseEnter}
