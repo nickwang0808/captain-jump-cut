@@ -15,7 +15,7 @@ function word({
   wordData,
   selectedWord,
 }) {
-  let className = " p-1 btn  ";
+  let className = " p-1 btn btn-lg ";
   if ((playPoint >= st && playPoint < et) || selectedWord.includes(wordData)) {
     className += "btn-outline-primary";
   } else if (include === false) {

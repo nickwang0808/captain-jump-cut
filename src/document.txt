@@ -52,9 +52,8 @@ TODO:
     =-implement te Json fetch
     =-modify the data to add include object
     -now lets add style to the editor
-    -implement multi select button
-    -
-
+    =-implement multi select button
+    -fix multi select state no updating imeediatly
 
 when I click on preview mode, im gonna set previewmode to true, read the timeblock
 
@@ -70,3 +69,6 @@ shadow. on click I want green. On delete I want gray. on play I want green aswel
 
 when I click and drag i want all dragged button to highlight, push these word to slectedWord, word.jsx will look into the
 and modify the styling acodringly, video to be seekto the last element of the state.
+
+onmousedown will set mouseIsDown to true and push the word in slectedWord, useffect listen for mousedIsdown, 
+and then call 
