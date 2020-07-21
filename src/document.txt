@@ -46,14 +46,17 @@ Main idea
     -text will be pulled from json transcription.
 
 TODO:
+   // line start with = is completed
 
     =-build a video player first
     =-add include key and value to json file
     =-implement te Json fetch
     =-modify the data to add include object
-    -now lets add style to the editor
     =-implement multi select button
-    -fix multi select state no updating imeediatly
+    =-fix multi select state no updating imeediatly
+    - add break point when scale down to vertical
+    -now lets add style to the editor
+
 
 when I click on preview mode, im gonna set previewmode to true, read the timeblock
 
