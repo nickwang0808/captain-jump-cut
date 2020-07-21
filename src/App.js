@@ -181,7 +181,7 @@ function App() {
               width="100%"
             />
           </div>
-          <div className="d-flex flex-row align-items-center m-2 flex-wrap ">
+          <div className="d-flex flex-row align-items-center flex-wrap ">
             <button
               className="m-2 btn btn-outline-primary"
               onClick={handlePreviewClicked}

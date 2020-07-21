@@ -54,8 +54,9 @@ TODO:
     =-modify the data to add include object
     =-implement multi select button
     =-fix multi select state no updating imeediatly
-    - add break point when scale down to vertical
-    -now lets add style to the editor
+    =-add break point when scale down to vertical
+    =-now lets add basic style to the editor
+    -add icon 
 
 
 when I click on preview mode, im gonna set previewmode to true, read the timeblock
