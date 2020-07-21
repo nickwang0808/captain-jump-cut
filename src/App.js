@@ -169,7 +169,6 @@ function App() {
         <div className="col-sm mr-4 d-flex flex-column justify-content-center">
           <div className="d-flex">
             <ReactPlayer
-              // fuck css, can't get his stupid fucking box to fit
               // className="d-flex flex-column justify-content-start"
               ref={player}
               url={url}
