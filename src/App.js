@@ -167,18 +167,21 @@ function App() {
   // }, [mouseIsDown]);
 
   return (
-    <div className="m-4 d-flex flex-row">
-      <div className="mr-4 p-2 vid-box align-items-start">
+    <div className="m-4 d-flex flex-row justify-content-center ">
+      <div className="d-flex flex-column mr-4 vid-box w-50 shadow">
         <ReactPlayer
+          // fuck css, can't get his stupid fucking box to fit
+          // className="d-flex flex-column justify-content-start"
           ref={player}
           url={url}
           controls={true}
           progressInterval={10}
           onProgress={handleProgress}
           playing={playing}
-          style={{ border: "none" }}
+          height="100%"
+          width="100%"
         />
-        <div className="d-flex flex-row align-items-center justify-content-center">
+        <div className="d-flex flex-row align-items-center m-2 ">
           <button
             className="m-2 btn btn-outline-primary"
             onClick={handlePreviewClicked}
@@ -186,12 +189,9 @@ function App() {
             Preview Mode
           </button>
           <span>{previewMode ? "On" : "Off"}</span>
-          <button className="m-2 btn btn-primary" onClick={handlePause}>
-            Pause
-          </button>
         </div>
       </div>
-      <div className="p-2 word-box ">
+      <div className="ml-2 p-2 word-box w-50 shadow">
         {data.map((w) => (
           <Word
             key={w.alternatives[0].content + w.start_time + data.indexOf(w)}

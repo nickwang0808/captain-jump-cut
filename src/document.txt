@@ -52,8 +52,8 @@ TODO:
     =-implement te Json fetch
     =-modify the data to add include object
     -now lets add style to the editor
-    -implement multi select button
-    -
+    =-implement multi select button
+    -fix multi select state no updating imeediatly
 
 
 when I click on preview mode, im gonna set previewmode to true, read the timeblock
