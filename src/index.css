@@ -21,10 +21,7 @@ code {
 }
 
 .word-box {
-  width: 50%;
   height: 90vh;
-  display: flex;
-  flex-wrap: wrap;
   overflow: auto;
 }
 
@@ -32,11 +29,6 @@ code {
   color: lightgray;
 }
 
-.player {
-  border: none;
-}
-
 video:focus {
   outline: none !important;
 }
-
