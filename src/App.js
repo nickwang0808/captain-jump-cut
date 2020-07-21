@@ -169,7 +169,6 @@ function App() {
         <div className="col-sm mr-4 d-flex flex-column justify-content-center">
           <div className="d-flex">
             <ReactPlayer
-              // fuck css, can't get his stupid fucking box to fit
               // className="d-flex flex-column justify-content-start"
               ref={player}
               url={url}
@@ -181,7 +180,7 @@ function App() {
               width="100%"
             />
           </div>
-          <div className="d-flex flex-row align-items-center m-2 flex-wrap ">
+          <div className="d-flex flex-row align-items-center flex-wrap ">
             <button
               className="m-2 btn btn-outline-primary"
               onClick={handlePreviewClicked}

@@ -22,24 +22,31 @@ function word({
     className += "exclude";
   }
 
-  const disable = contentType === "punctuation" ? true : false;
+  const isPunct = contentType === "punctuation" ? true : false;
 
-  return (
-    <div>
-      <button
-        className={className}
-        onClick={onClick}
-        onKeyDown={onKeyDown}
-        type="button"
-        disabled={disable}
-        onMouseDown={onMouseDown}
-        onMouseUp={onMouseUp}
-        onMouseEnter={onMouseEnter}
-      >
-        {value}
-      </button>
-    </div>
-  );
+  if (!isPunct) {
+    return (
+      <div>
+        <button
+          className={className}
+          onClick={onClick}
+          onKeyDown={onKeyDown}
+          type="button"
+          onMouseDown={onMouseDown}
+          onMouseUp={onMouseUp}
+          onMouseEnter={onMouseEnter}
+        >
+          {value}
+        </button>
+      </div>
+    );
+  } else {
+    return (
+      <div className="d-flex flex-column justify-content-center">
+        <span>{value}</span>
+      </div>
+    );
+  }
 }
 
 export default word;
