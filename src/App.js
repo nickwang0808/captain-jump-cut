@@ -9,7 +9,7 @@ function App() {
   const [playing, setPlaying] = useState(false);
   const [timeBlock, setTimeBlock] = useState([]);
   const [index, setIndex] = useState(0);
-  const [previewMode, setPreviewMode] = useState(false);
+  const [previewMode, setPreviewMode] = useState(true);
   const [mouseIsDown, setMouseIsDown] = useState(false);
   const [selectedWord, setSelectedWord] = useState([]);
   const [url, setUrl] = useState(
@@ -53,7 +53,6 @@ function App() {
 
   const handleMouseDown = (e, w) => {
     setMouseIsDown(true);
-    console.log(mouseIsDown);
     // add the clicked word to array, and check if word is in, if is then remove it.
     let selectedWordCopy = [...selectedWord];
     if (selectedWord.length !== 0) {
@@ -61,7 +60,6 @@ function App() {
     } else if (!selectedWord.includes(w)) {
       selectedWordCopy.push(w);
       setSelectedWord(selectedWordCopy);
-      console.log(selectedWord);
     } else {
       selectedWordCopy.splice(selectedWordCopy.indexOf(w), 1);
       setSelectedWord(selectedWordCopy);
@@ -109,19 +107,26 @@ function App() {
     }
   };
 
+  //watch playPoint and timeBlock match
+  useEffect(() => {
+    if (previewMode) {
+      playPreview();
+    }
+  }, [playPoint]);
+
   const playPreview = () => {
     if (timeBlock.length > 0) {
-      console.log("playPreview", timeBlock);
+      // console.log("playPreview", timeBlock);
       for (let i = 1; i < timeBlock.length; i++) {
         if (playPoint >= timeBlock[i - 1][0] && playPoint < timeBlock[i][0]) {
           setIndex(i - 1);
-          console.log("index is ", i, index);
+          // console.log("index is ", i, index);
           if (
             // this block check if playPoint is in the exclude zone.
             playPoint > timeBlock[index][1] - 0.1 && // the 0.1 is the tolerance of the word, change it to have more or less of the word
             playPoint < timeBlock[index + 1][0] // index 0 is start_time
           ) {
-            console.log("playpoint matched");
+            // console.log("playpoint matched");
             player.current.seekTo(timeBlock[index + 1][0]);
           }
         } else continue;
@@ -148,19 +153,15 @@ function App() {
       );
   }, []);
 
-  //watch playPoint and timeBlock match
-  useEffect(() => {
-    if (previewMode) {
-      console.log(playPoint);
-      playPreview();
-    }
-  }, [playPoint]);
-
   // useEffect(() => {
   //   if (mouseIsDown) {
   //     document.addEventListener("onmouseenter", console.log("e"));
   //   }
   // }, [mouseIsDown]);
+
+  useEffect(() => {
+    console.log("Selected word", selectedWord);
+  }, [selectedWord]);
 
   return (
     <div className="container">
