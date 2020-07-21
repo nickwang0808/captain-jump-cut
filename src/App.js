@@ -2,6 +2,18 @@ import React, { useState, useEffect, useRef } from "react";
 import Word from "./components/word";
 import ReactPlayer from "react-player";
 
+// const initialState = { mouseIsDown: true };
+// function reducer(state, action) {
+//   switch (action) {
+//     case "mousedown":
+//       return { mouseIsDown: true };
+//     case "mouseup":
+//       return { mouseIsDown: false };
+//     default:
+//       throw new Error();
+//   }
+// }
+
 function App() {
   const player = useRef(null);
   const [playPoint, setPlayPoint] = useState(0);
@@ -167,49 +179,54 @@ function App() {
   // }, [mouseIsDown]);
 
   return (
-    <div className="m-4 d-flex flex-row justify-content-center ">
-      <div className="d-flex flex-column mr-4 vid-box w-50 shadow">
-        <ReactPlayer
-          // fuck css, can't get his stupid fucking box to fit
-          // className="d-flex flex-column justify-content-start"
-          ref={player}
-          url={url}
-          controls={true}
-          progressInterval={10}
-          onProgress={handleProgress}
-          playing={playing}
-          height="100%"
-          width="100%"
-        />
-        <div className="d-flex flex-row align-items-center m-2 ">
-          <button
-            className="m-2 btn btn-outline-primary"
-            onClick={handlePreviewClicked}
-          >
-            Preview Mode
-          </button>
-          <span>{previewMode ? "On" : "Off"}</span>
-        </div>
-      </div>
-      <div className="ml-2 p-2 word-box w-50 shadow">
-        {data.map((w) => (
-          <Word
-            key={w.alternatives[0].content + w.start_time + data.indexOf(w)}
-            value={w.alternatives[0].content}
-            st={w.start_time}
-            et={w.end_time}
-            contentType={w.type}
-            include={w.include}
-            playPoint={playPoint}
-            // onClick={() => handleClick(w)}
-            onKeyDown={(e) => handleKeyDown(e, w)}
-            onMouseUp={() => handleMouseUp(w)}
-            onMouseDown={(e) => handleMouseDown(e, w)}
-            onMouseEnter={(e) => handleMouseEnter(e, w)}
-            wordData={w}
-            selectedWord={selectedWord}
+    <div className="container">
+      <div className="mt-4 d-flex flex-row ">
+        <div className="d-flex flex-column mr-4 vid-box w-50 shadow">
+          <ReactPlayer
+            // fuck css, can't get his stupid fucking box to fit
+            // className="d-flex flex-column justify-content-start"
+            ref={player}
+            url={url}
+            controls={true}
+            progressInterval={10}
+            onProgress={handleProgress}
+            playing={playing}
+            height="100%"
+            width="100%"
           />
-        ))}
+          <div className="d-flex flex-row align-items-center m-2 ">
+            <button
+              className="m-2 btn btn-outline-primary"
+              onClick={handlePreviewClicked}
+            >
+              Preview Mode
+            </button>
+            <span>{previewMode ? "On" : "Off"}</span>
+            <button className="m-2 btn btn-outline-primary">
+              Render and Export
+            </button>
+          </div>
+        </div>
+        <div className="ml-2 p-2 word-box w-50 shadow">
+          {data.map((w) => (
+            <Word
+              key={w.alternatives[0].content + w.start_time + data.indexOf(w)}
+              value={w.alternatives[0].content}
+              st={w.start_time}
+              et={w.end_time}
+              contentType={w.type}
+              include={w.include}
+              playPoint={playPoint}
+              // onClick={() => handleClick(w)}
+              onKeyDown={(e) => handleKeyDown(e, w)}
+              onMouseUp={() => handleMouseUp(w)}
+              onMouseDown={(e) => handleMouseDown(e, w)}
+              onMouseEnter={(e) => handleMouseEnter(e, w)}
+              wordData={w}
+              selectedWord={selectedWord}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

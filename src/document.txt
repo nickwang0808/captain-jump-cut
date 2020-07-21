@@ -55,7 +55,6 @@ TODO:
     =-implement multi select button
     -fix multi select state no updating imeediatly
 
-
 when I click on preview mode, im gonna set previewmode to true, read the timeblock
 
 if the timeblock is not [], call a function to watch for second 10 and log it 
