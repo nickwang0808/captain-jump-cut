@@ -2,18 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Word from "./components/word";
 import ReactPlayer from "react-player";
 
-// const initialState = { mouseIsDown: true };
-// function reducer(state, action) {
-//   switch (action) {
-//     case "mousedown":
-//       return { mouseIsDown: true };
-//     case "mouseup":
-//       return { mouseIsDown: false };
-//     default:
-//       throw new Error();
-//   }
-// }
-
 function App() {
   const player = useRef(null);
   const [playPoint, setPlayPoint] = useState(0);
@@ -110,10 +98,6 @@ function App() {
       }
       handleSetTimeBlock();
     }
-  };
-
-  const handlePause = () => {
-    setPlaying(false);
   };
 
   const handlePreviewClicked = () => {
