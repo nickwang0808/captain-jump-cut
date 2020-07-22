@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import Word from "./components/word";
 import ReactPlayer from "react-player";
+import { Grid } from "@material-ui/core";
+import { Container } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import { Switch } from "@material-ui/core";
+import { FormControlLabel } from "@material-ui/core";
 
 function App() {
   const player = useRef(null);
@@ -164,10 +169,10 @@ function App() {
   }, [selectedWord]);
 
   return (
-    <div className="container ">
-      <div className="mt-4 row ">
-        <div className="col-sm mr-4 d-flex flex-column justify-content-center">
-          <div className="d-flex">
+    <Container maxWidth="lg">
+      <Grid container direction="row" spacing={4}>
+        <Grid item md="6" xs="12">
+          <Grid container direction="column">
             <ReactPlayer
               // className="d-flex flex-column justify-content-start"
               ref={player}
@@ -179,42 +184,44 @@ function App() {
               height="100%"
               width="100%"
             />
-          </div>
-          <div className="d-flex flex-row align-items-center flex-wrap ">
-            <button
-              className="m-2 btn btn-outline-primary"
-              onClick={handlePreviewClicked}
-            >
-              Preview Mode
-            </button>
-            <span>{previewMode ? "On" : "Off"}</span>
-            <button className="m-2 btn btn-outline-primary">
+          </Grid>
+          <Grid>
+            <Switch
+              variant="contained"
+              color="primary"
+              onChange={handlePreviewClicked}
+              checked={previewMode ? true : false}
+            ></Switch>
+            <span>Preview Edits</span>
+            {/* <Button variant="contained" color="primary">
               Render and Export
-            </button>
-          </div>
-        </div>
-        <div className="col-sm d-flex flex-wrap word-box p-4 border rounded shadow-sm">
-          {data.map((w) => (
-            <Word
-              key={w.alternatives[0].content + w.start_time + data.indexOf(w)}
-              value={w.alternatives[0].content}
-              st={w.start_time}
-              et={w.end_time}
-              contentType={w.type}
-              include={w.include}
-              playPoint={playPoint}
-              // onClick={() => handleClick(w)}
-              onKeyDown={(e) => handleKeyDown(e, w)}
-              onMouseUp={() => handleMouseUp(w)}
-              onMouseDown={(e) => handleMouseDown(e, w)}
-              onMouseEnter={(e) => handleMouseEnter(e, w)}
-              wordData={w}
-              selectedWord={selectedWord}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
+            </Button> */}
+          </Grid>
+        </Grid>
+        <Grid item md="6" xs="12">
+          <Grid container direction="row">
+            {data.map((w) => (
+              <Word
+                key={w.alternatives[0].content + w.start_time + data.indexOf(w)}
+                value={w.alternatives[0].content}
+                st={w.start_time}
+                et={w.end_time}
+                contentType={w.type}
+                include={w.include}
+                playPoint={playPoint}
+                // onClick={() => handleClick(w)}
+                onKeyDown={(e) => handleKeyDown(e, w)}
+                onMouseUp={() => handleMouseUp(w)}
+                onMouseDown={(e) => handleMouseDown(e, w)}
+                onMouseEnter={(e) => handleMouseEnter(e, w)}
+                wordData={w}
+                selectedWord={selectedWord}
+              />
+            ))}
+          </Grid>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
 
