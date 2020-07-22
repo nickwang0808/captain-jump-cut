@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "4px 0px",
     padding: "1px 3px",
     boxSizing: "border-box",
-    border: "1px solid white",
+    border: "1px solid none",
     borderRadius: theme.shape.borderRadius,
     userSelect: "none",
   },
