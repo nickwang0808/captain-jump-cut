@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import Word from "./components/word";
 import ReactPlayer from "react-player";
-import { Grid, Box, CssBaseline, Typography } from "@material-ui/core";
+import { Grid, Box, CssBaseline, Typography, Paper } from "@material-ui/core";
 import { Container } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Switch } from "@material-ui/core";
 import { spacing, boxSizing } from "@material-ui/system";
+import TopBar from "./components/topbar";
 
 function App() {
   const player = useRef(null);
@@ -171,11 +172,12 @@ function App() {
   return (
     <>
       <CssBaseline />
-      <Container maxWidth="lg">
-        <Box mt={7}>
-          <Grid container direction="row" spacing={6}>
+      <TopBar />
+      <Container maxwidth="lg">
+        <Box mt={4} overflow="hidden" height="85vh">
+          <Grid container direction="row" spacing={4}>
             <Grid item md="6" xs="12">
-              <Grid container direction="column">
+              <Box>
                 <ReactPlayer
                   // className="d-flex flex-column justify-content-start"
                   ref={player}
@@ -187,7 +189,7 @@ function App() {
                   height="100%"
                   width="100%"
                 />
-              </Grid>
+              </Box>
               <Box display="flex" alignItems="center">
                 <Switch
                   variant="contained"
@@ -203,12 +205,14 @@ function App() {
             </Grid>
             <Grid item md="6" xs="12">
               <Grid container direction="row">
+                {/* <Paper p={4} variant="outlined"> */}
                 <Box
+                  mt={-1}
                   display="flex"
                   flexWrap="wrap"
                   overflow="auto"
                   direction="row"
-                  height="85vh"
+                  height="80vh"
                 >
                   {data.map((w) => (
                     <Word
@@ -233,6 +237,7 @@ function App() {
                     />
                   ))}
                 </Box>
+                {/* </Paper> */}
               </Grid>
             </Grid>
           </Grid>

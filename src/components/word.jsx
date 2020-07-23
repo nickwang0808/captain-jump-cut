@@ -5,7 +5,7 @@ import { palette } from "@material-ui/system";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    ...theme.typography.h5,
+    ...theme.typography.h6,
     margin: "4px 0px",
     padding: "1px 3px",
     boxSizing: "border-box",
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   deleted: {
     backgroundColor: "white",
     color: "lightgrey",
+    textDecoration: "line-through",
   },
   synced: {
     backgroundColor: theme.palette.secondary.main,
