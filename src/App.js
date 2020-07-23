@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import Word from "./components/word";
 import ReactPlayer from "react-player";
-import { Grid, Box, CssBaseline, Typography, Paper } from "@material-ui/core";
+import { Grid, Box, CssBaseline, Typography } from "@material-ui/core";
 import { Container } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Switch } from "@material-ui/core";
-import { spacing, boxSizing } from "@material-ui/system";
 import TopBar from "./components/topbar";
 
 function App() {
@@ -140,6 +139,17 @@ function App() {
     }
   };
 
+  const removeSelectedWord = () => {
+    console.log("removeSelected word");
+    setSelectedWord([]);
+  };
+
+  useEffect(() => {
+    if (selectedWord.length !== 0 && mouseIsDown !== true) {
+      document.addEventListener("mousedown", removeSelectedWord);
+    }
+  }, [mouseIsDown]);
+
   // fetch json file
   useEffect(() => {
     // put the json file to data state
@@ -159,12 +169,6 @@ function App() {
       );
   }, []);
 
-  // useEffect(() => {
-  //   if (mouseIsDown) {
-  //     document.addEventListener("onmouseenter", console.log("e"));
-  //   }
-  // }, [mouseIsDown]);
-
   useEffect(() => {
     console.log("Selected word", selectedWord);
   }, [selectedWord]);
@@ -176,7 +180,7 @@ function App() {
       <Container maxwidth="lg">
         <Box mt={4} overflow="hidden" height="85vh">
           <Grid container direction="row" spacing={4}>
-            <Grid item md="6" xs="12">
+            <Grid item md={6} xs={12}>
               <Box>
                 <ReactPlayer
                   // className="d-flex flex-column justify-content-start"
@@ -197,13 +201,13 @@ function App() {
                   onChange={handlePreviewClicked}
                   checked={previewMode ? true : false}
                 ></Switch>
-                <Typography variant="body">Preview Edits</Typography>
+                <Typography variant="body1">Preview Edits</Typography>
                 {/* <Button variant="contained" color="primary">
               Render and Export
             </Button> */}
               </Box>
             </Grid>
-            <Grid item md="6" xs="12">
+            <Grid item md={6} xs={12}>
               <Grid container direction="row">
                 {/* <Paper p={4} variant="outlined"> */}
                 <Box
