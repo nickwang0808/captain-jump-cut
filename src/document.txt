@@ -56,7 +56,7 @@ TODO:
     =-fix multi select state no updating imeediatly
     =-add break point when scale down to vertical
     =-now lets add basic style to the editor
-    -add icon 
+    -fuck i gotta learn design and make a good looking ui
 
 
 when I click on preview mode, im gonna set previewmode to true, read the timeblock

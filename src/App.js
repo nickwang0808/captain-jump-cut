@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import Word from "./components/word";
 import ReactPlayer from "react-player";
+import { Grid, Box, CssBaseline, Typography } from "@material-ui/core";
+import { Container } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import { Switch } from "@material-ui/core";
+import TopBar from "./components/topbar";
 
 function App() {
   const player = useRef(null);
@@ -134,6 +139,17 @@ function App() {
     }
   };
 
+  const removeSelectedWord = () => {
+    console.log("removeSelected word");
+    setSelectedWord([]);
+  };
+
+  useEffect(() => {
+    if (selectedWord.length !== 0 && mouseIsDown !== true) {
+      document.addEventListener("mousedown", removeSelectedWord);
+    }
+  }, [mouseIsDown]);
+
   // fetch json file
   useEffect(() => {
     // put the json file to data state
@@ -153,68 +169,85 @@ function App() {
       );
   }, []);
 
-  // useEffect(() => {
-  //   if (mouseIsDown) {
-  //     document.addEventListener("onmouseenter", console.log("e"));
-  //   }
-  // }, [mouseIsDown]);
-
   useEffect(() => {
     console.log("Selected word", selectedWord);
   }, [selectedWord]);
 
   return (
-    <div className="container ">
-      <div className="mt-4 row ">
-        <div className="col-sm mr-4 d-flex flex-column justify-content-center">
-          <div className="d-flex">
-            <ReactPlayer
-              // className="d-flex flex-column justify-content-start"
-              ref={player}
-              url={url}
-              controls={true}
-              progressInterval={10}
-              onProgress={handleProgress}
-              playing={playing}
-              height="100%"
-              width="100%"
-            />
-          </div>
-          <div className="d-flex flex-row align-items-center flex-wrap ">
-            <button
-              className="m-2 btn btn-outline-primary"
-              onClick={handlePreviewClicked}
-            >
-              Preview Mode
-            </button>
-            <span>{previewMode ? "On" : "Off"}</span>
-            <button className="m-2 btn btn-outline-primary">
+    <>
+      <CssBaseline />
+      <TopBar />
+      <Container maxwidth="lg">
+        <Box mt={4} overflow="hidden" height="85vh">
+          <Grid container direction="row" spacing={4}>
+            <Grid item md={6} xs={12}>
+              <Box>
+                <ReactPlayer
+                  // className="d-flex flex-column justify-content-start"
+                  ref={player}
+                  url={url}
+                  controls={true}
+                  progressInterval={10}
+                  onProgress={handleProgress}
+                  playing={playing}
+                  height="100%"
+                  width="100%"
+                />
+              </Box>
+              <Box display="flex" alignItems="center">
+                <Switch
+                  variant="contained"
+                  color="primary"
+                  onChange={handlePreviewClicked}
+                  checked={previewMode ? true : false}
+                ></Switch>
+                <Typography variant="body1">Preview Edits</Typography>
+                {/* <Button variant="contained" color="primary">
               Render and Export
-            </button>
-          </div>
-        </div>
-        <div className="col-sm d-flex flex-wrap word-box p-4 border rounded shadow-sm">
-          {data.map((w) => (
-            <Word
-              key={w.alternatives[0].content + w.start_time + data.indexOf(w)}
-              value={w.alternatives[0].content}
-              st={w.start_time}
-              et={w.end_time}
-              contentType={w.type}
-              include={w.include}
-              playPoint={playPoint}
-              // onClick={() => handleClick(w)}
-              onKeyDown={(e) => handleKeyDown(e, w)}
-              onMouseUp={() => handleMouseUp(w)}
-              onMouseDown={(e) => handleMouseDown(e, w)}
-              onMouseEnter={(e) => handleMouseEnter(e, w)}
-              wordData={w}
-              selectedWord={selectedWord}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
+            </Button> */}
+              </Box>
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <Grid container direction="row">
+                {/* <Paper p={4} variant="outlined"> */}
+                <Box
+                  mt={-1}
+                  display="flex"
+                  flexWrap="wrap"
+                  overflow="auto"
+                  direction="row"
+                  height="80vh"
+                >
+                  {data.map((w) => (
+                    <Word
+                      key={
+                        w.alternatives[0].content +
+                        w.start_time +
+                        data.indexOf(w)
+                      }
+                      value={w.alternatives[0].content}
+                      st={w.start_time}
+                      et={w.end_time}
+                      contentType={w.type}
+                      include={w.include}
+                      playPoint={playPoint}
+                      // onClick={() => handleClick(w)}
+                      onKeyDown={(e) => handleKeyDown(e, w)}
+                      onMouseUp={() => handleMouseUp(w)}
+                      onMouseDown={(e) => handleMouseDown(e, w)}
+                      onMouseEnter={(e) => handleMouseEnter(e, w)}
+                      wordData={w}
+                      selectedWord={selectedWord}
+                    />
+                  ))}
+                </Box>
+                {/* </Paper> */}
+              </Grid>
+            </Grid>
+          </Grid>
+        </Box>
+      </Container>
+    </>
   );
 }
 
