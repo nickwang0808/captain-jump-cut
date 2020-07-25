@@ -175,9 +175,10 @@ function App() {
     }
   };
 
+  //  click on white space to cancel word selection
   // useEffect(() => {
   //   if (selectedWord.length !== 0 && mouseIsDown !== true) {
-  //     // document.addEventListener("mousedown", removeSelectedWord);
+  //     document.addEventListener("mousedown", removeSelectedWord);
   //     document.addEventListener("mousedown", (e) => console.log(e.target));
   //   }
   // }, [mouseIsDown]);
