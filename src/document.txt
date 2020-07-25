@@ -58,7 +58,7 @@ TODO:
     =-now lets add basic style to the editor
     =-fuck i gotta learn design and make a good looking ui
     -add del and recover button
-
+    -remove focus outline
 
 when I click on preview mode, im gonna set previewmode to true, read the timeblock
 
