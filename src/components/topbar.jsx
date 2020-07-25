@@ -7,7 +7,6 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import { Button, Box } from "@material-ui/core";
 import UndoIcon from "@material-ui/icons/Undo";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { grey } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -95,6 +94,7 @@ export default function TopBar({ clickUndo, clickDelete, selectedWord }) {
             <IconButton
               className={classes.IconButton}
               onClick={clickDelete}
+              color="default"
               disabled={
                 selectedWord.length === 0 || selectedWord[0].include === false
                   ? true
