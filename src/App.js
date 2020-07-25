@@ -6,6 +6,7 @@ import { Container } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Switch } from "@material-ui/core";
 import TopBar from "./components/topbar";
+import { makeStyles } from "@material-ui/core/styles";
 
 function App() {
   const player = useRef(null);
@@ -20,6 +21,25 @@ function App() {
   const [url, setUrl] = useState(
     "https://inputvid.s3.us-east-2.amazonaws.com/1mintedtalk.mp4"
   );
+
+  // fetch json file
+  useEffect(() => {
+    // put the json file to data state
+    fetch(
+      "https://transcriptionfornick.s3.us-east-2.amazonaws.com/asrOutput.json"
+    )
+      .then((response) => response.json())
+      .then((json) =>
+        setData(
+          json.results.items.map((word) => {
+            word.include = true;
+            // tweak this value to get rid of the sound of a removed word
+            // word.end_time = parseFloat(word.end_time) - 0.2;
+            return word;
+          })
+        )
+      );
+  }, []);
 
   const handleSetTimeBlock = () => {
     let includeWord = data.filter((w) => w.type !== "punctuation");
@@ -92,15 +112,31 @@ function App() {
   // change include to false when Del is pressed
   const handleKeyDown = (e, w) => {
     if (e.keyCode === 8) {
-      let dataClone = [...data];
-      for (let i = 0; i < selectedWord.length; i++) {
-        let index = data.indexOf(selectedWord[i]);
-        dataClone[index].include = false;
-        setData(dataClone);
-        setSelectedWord([]);
-      }
-      handleSetTimeBlock();
+      deleteWord();
     }
+  };
+
+  const deleteWord = () => {
+    let dataClone = [...data];
+    for (let i = 0; i < selectedWord.length; i++) {
+      let index = data.indexOf(selectedWord[i]);
+      dataClone[index].include = false;
+      setData(dataClone);
+      setSelectedWord([]);
+    }
+    handleSetTimeBlock();
+  };
+
+  const handleClickUndo = () => {
+    console.log("clickedUndo");
+    let dataClone = [...data];
+    for (let i = 0; i < selectedWord.length; i++) {
+      let index = data.indexOf(selectedWord[i]);
+      dataClone[index].include = true;
+      setData(dataClone);
+      setSelectedWord([]);
+    }
+    handleSetTimeBlock();
   };
 
   const handlePreviewClicked = () => {
@@ -139,44 +175,26 @@ function App() {
     }
   };
 
-  const removeSelectedWord = () => {
-    console.log("removeSelected word");
-    setSelectedWord([]);
-  };
+  // useEffect(() => {
+  //   if (selectedWord.length !== 0 && mouseIsDown !== true) {
+  //     // document.addEventListener("mousedown", removeSelectedWord);
+  //     document.addEventListener("mousedown", (e) => console.log(e.target));
+  //   }
+  // }, [mouseIsDown]);
 
-  useEffect(() => {
-    if (selectedWord.length !== 0 && mouseIsDown !== true) {
-      document.addEventListener("mousedown", removeSelectedWord);
-    }
-  }, [mouseIsDown]);
-
-  // fetch json file
-  useEffect(() => {
-    // put the json file to data state
-    fetch(
-      "https://transcriptionfornick.s3.us-east-2.amazonaws.com/asrOutput.json"
-    )
-      .then((response) => response.json())
-      .then((json) =>
-        setData(
-          json.results.items.map((word) => {
-            word.include = true;
-            // tweak this value to get rid of the sound of a removed word
-            // word.end_time = parseFloat(word.end_time) - 0.2;
-            return word;
-          })
-        )
-      );
-  }, []);
-
-  useEffect(() => {
-    console.log("Selected word", selectedWord);
-  }, [selectedWord]);
+  // const removeSelectedWord = () => {
+  //   console.log("removeSelected word");
+  //   setSelectedWord([]);
+  // };
 
   return (
     <>
       <CssBaseline />
-      <TopBar />
+      <TopBar
+        clickDelete={deleteWord}
+        clickUndo={handleClickUndo}
+        selectedWord={selectedWord}
+      />
       <Container maxwidth="lg">
         <Box mt={4} overflow="hidden" height="85vh">
           <Grid container direction="row" spacing={4}>

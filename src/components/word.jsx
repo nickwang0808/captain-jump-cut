@@ -1,24 +1,22 @@
-import React, { useState } from "react";
-import { Box, Button, Link, Typography } from "@material-ui/core";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { palette } from "@material-ui/system";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     ...theme.typography.h6,
     margin: "4px 0px",
-    padding: "1px 3px",
+    padding: "2px 3px",
     boxSizing: "border-box",
     border: "1px solid none",
     borderRadius: theme.shape.borderRadius,
     userSelect: "none",
   },
   clicked: {
-    backgroundColor: theme.palette.primary.main,
-    color: "white",
+    // backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.main,
   },
   deleted: {
-    backgroundColor: "white",
+    // backgroundColor: "white",
     color: "lightgrey",
     textDecoration: "line-through",
   },
@@ -47,10 +45,10 @@ function Word({
   const classes = useStyles();
 
   let className = classes.root;
-  if (include === false) {
-    className = `${classes.root} ${classes.deleted}`;
-  } else if (selectedWord.includes(wordData)) {
+  if (selectedWord.includes(wordData)) {
     className = `${classes.root} ${classes.clicked}`;
+  } else if (include === false) {
+    className = `${classes.root} ${classes.deleted}`;
   } else if (playPoint >= st && playPoint < et) {
     // TODO: add a delay if clicked
     className = `${classes.root} ${classes.synced}`;

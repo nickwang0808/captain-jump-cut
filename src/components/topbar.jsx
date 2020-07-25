@@ -3,11 +3,11 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
 import { Button, Box } from "@material-ui/core";
+import UndoIcon from "@material-ui/icons/Undo";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { grey } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     display: "none",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("xs")]: {
       display: "block",
     },
   },
@@ -61,19 +61,20 @@ const useStyles = makeStyles((theme) => ({
         width: "20ch",
       },
     },
-    buttonBox: {
-      flexGrow: "1",
-      flexDirection: "row-reverse",
-    },
   },
   buttonBox: {
     flexGrow: 1,
     display: "flex",
     flexDirection: "row-reverse",
   },
+  exportButton: {
+    marginRight: theme.spacing(2),
+    marginLeft: theme.spacing(2),
+  },
+  IconButton: {},
 }));
 
-export default function TopBar() {
+export default function TopBar({ clickUndo, clickDelete, selectedWord }) {
   const classes = useStyles();
 
   return (
@@ -83,34 +84,36 @@ export default function TopBar() {
           <Typography className={classes.title} variant="h6" noWrap>
             Captain JumpCut
           </Typography>
-          {/* <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div> */}
           <Box className={classes.buttonBox}>
             <Button
-              className={classes.menuButton}
+              className={classes.exportButton}
               variant="contained"
               color="secondary"
             >
               Export
             </Button>
-            <Button
-              className={classes.menuButton}
-              variant="contained"
-              color="secondary"
+            <IconButton
+              className={classes.IconButton}
+              onClick={clickDelete}
+              disabled={
+                selectedWord.length === 0 || selectedWord[0].include === false
+                  ? true
+                  : false
+              }
             >
-              Del
-            </Button>
+              <DeleteIcon />
+            </IconButton>
+            <IconButton
+              className={classes.IconButton}
+              onClick={clickUndo}
+              disabled={
+                selectedWord.length === 0 || selectedWord[0].include === true
+                  ? true
+                  : false
+              }
+            >
+              <UndoIcon />
+            </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
