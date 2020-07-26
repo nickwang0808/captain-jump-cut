@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/captain-jump-cut/precache-manifest.c12eff3827123a9436170ac6f82a90e8.js"
+  "/captain-jump-cut/precache-manifest.2e9eed26da02db9401ae6d121cd50df2.js"
 );
 
 self.addEventListener('message', (event) => {
